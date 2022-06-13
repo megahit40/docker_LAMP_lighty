@@ -1,13 +1,14 @@
-<h1>Hello World!!!</h1>
-<h4>Attempting MySQL connection from php...</h4>
-<!--?php 
-$host = 'mysql';
-$user = 'root';
-$pass = 'rootpassword';
-$conn = new mysqli($host, $user, $pass);
+<?php 
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-echo "Connected to MySQL successfully!";
-?-->
+echo <<< EOF
+
+<!doctype html>
+<html>
+	<body>
+		<h1>Hello World!!!</h1>
+		<h4>Attempting MySQL connection from php...</h4>
+	</body>	
+</html>
+
+EOF
+?>
