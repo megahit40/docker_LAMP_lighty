@@ -1,14 +1,10 @@
 <?php 
-
 echo <<< EOF
-
 <!doctype html>
 <html>
 	<body>
-		<h1>Hello World!!!</h1>
-		<h4>Attempting MySQL connection from php...</h4>
+		<h2>Hello World!!!</h2>
 	</body>	
 </html>
-
 EOF
 ?>
