@@ -1,0 +1,51 @@
+version: "3.2"
+services:
+
+  lighttpd:
+    build: './lighttpd/'
+    container_name: webserver_lighty
+    depends_on:
+      - php
+      - db
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./public-html:/var/www/localhost
+
+  php:
+    build: './php-fpm/'
+    container_name: backend_php
+    networks:
+      - backend
+    volumes:
+      - ./public-html:/var/www/html
+
+  db:
+    build: './mariadb/'
+    restart: always
+    container_name: backend_mariadb
+    networks:
+      - backend
+    environment:
+      - MARIADB_ROOT_PASSWORD=rootpassword
+      - MARIADB_USER=admin
+      - MARIADB_PASSWORD=password
+      - MARIADB_DATABASE=mysql
+    volumes:
+      - ./mariadb/db_storage:/var/lib/mysql
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: webserver_admin
+    restart: always
+    ports:
+      - 8081:8080
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
